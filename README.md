@@ -18,6 +18,7 @@ My IdeaVim conf base on [https://github.com/JetBrains/ideavim/discussions/303#di
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
+" 参考：https://github.com/JetBrains/ideavim/discussions/303#discussioncomment-7664118
 " vim settings
 " 设置你的视图或窗口中顶部和底部的“保留”行数为5行
 set scrolloff=5
@@ -248,53 +249,65 @@ nmap <leader>v <Action>(VcsGroups)
 " open IdeaVim settings
 nmap \\v <Action>(VimActions)
 
-" text-object (bundle plugin)
-set vim-paragraph-motion
-set textobj-indent
-set textobj-entire
-set argtextobj
-
-" jump-motion (required idea plugin: IdeaVim-EasyMotion, AceJump)
-set easymotion
-
-" highlight yank (bundle plugin)-高亮拷贝的文本
-set highlightedyank
-let g:highlightedyank_highlight_duration = "1000"
-
-" Commentary plugin-使用'tpope/vim-commentary'注释插件，用gc gcc 实现注释
-set commentary
-
-" translation (required idea plugin: Translation)
-nmap \\tt <Action>($ShowTranslationDialogAction)
-nmap \\ts <Action>($TranslateTextComponent)
-nmap \\ti <Action>($InclusiveTranslateAction)
-nmap \\te <Action>($ExclusiveTranslateAction)
-
-" string manipulate (required idea plugin: String Manipulation)
-nmap <leader>ss <Action>(osmedile.intellij.stringmanip.PopupChoiceAction)
-
-" code screenshot (required idea plugin: Code Screenshots)
-nmap <leader>cs <Action>(one.util.ideaplugin.screenshoter.CopyImageAction)
-
-" surround (bundle plugin)
-" usage: https://github.com/tpope/vim-surround
-set surround
-
-" exchange (bundle plugin)
-" usage: https://github.com/tommcdo/vim-exchange
-set exchange
-
-" nerdtree (bundle plugin)
-set NERDTree
-
-" replace with register (bundle plugin)
-" usage: https://github.com/vim-scripts/ReplaceWithRegister
-set ReplaceWithRegister
-
 " continuous shift
 xnoremap < <gv
 xnoremap > >gv
 
 " alias
+" ctrl+a 全选复制
 nmap <C-a> ggVG"+y
+
+" 插件相关
+" text-object (bundle plugin)
+Plug 'dbakker/vim-paragraph-motion'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'kana/vim-textobj-entire'
+Plug 'vim-scripts/argtextobj.vim'
+
+" jump-motion (required idea plugin: IdeaVim-EasyMotion, AceJump)
+" 需要额外安装IdeaVim-EasyMotion, AceJump插件，使用<leader><leader>w快速跳转
+Plug 'easymotion/vim-easymotion'
+
+" sneak(bundle plugin)-使用s{char}{char}搜索
+Plug 'justinmk/vim-sneak'
+
+" highlight yank (bundle plugin)-高亮拷贝的文本
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = "1000"
+
+" Commentary(bundle plugin)-用gc gcc 实现注释
+Plug 'tpope/vim-commentary'
+
+" multiple (bundle plugin)-多光标编辑
+Plug 'terryma/vim-multiple-cursors'
+
+" translation (required idea plugin: Translation)
+" 翻译，需要在Marketplace额外安装Translation插件
+" nmap \\tt <Action>($ShowTranslationDialogAction)
+" nmap \\ts <Action>($TranslateTextComponent)
+" nmap \\ti <Action>($InclusiveTranslateAction)
+" nmap \\te <Action>($ExclusiveTranslateAction)
+
+" string manipulate (required idea plugin: String Manipulation)
+" 字符串快捷操作-需要在Marketplace额外安装string manipulation插件
+nmap <leader>ss <Action>(osmedile.intellij.stringmanip.PopupChoiceAction)
+
+" code screenshot (required idea plugin: Code Screenshots)
+" 代码截图，需要在Marketplace额外安装Code Screenshots插件
+" nmap <leader>cs <Action>(one.util.ideaplugin.screenshoter.CopyImageAction)
+
+" surround (bundle plugin)
+" usage: https://github.com/tpope/vim-surround
+Plug 'tpope/vim-surround'
+
+" exchange (bundle plugin)
+" usage: https://github.com/tommcdo/vim-exchange
+Plug 'tommcdo/vim-exchange'
+
+" nerdtree (bundle plugin)
+Plug 'preservim/nerdtree'
+
+" replace with register (bundle plugin)
+" usage: https://github.com/vim-scripts/ReplaceWithRegister
+Plug 'vim-scripts/ReplaceWithRegister'
 ```
