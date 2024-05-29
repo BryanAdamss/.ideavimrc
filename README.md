@@ -2,11 +2,33 @@
 My IdeaVim conf base on [https://github.com/JetBrains/ideavim/discussions/303#discussioncomment-7664118](https://github.com/JetBrains/ideavim/discussions/303#discussioncomment-7664118)
 
 
-
 ```
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
 " vim settings
+" 设置你的视图或窗口中顶部和底部的“保留”行数为5行
 set scrolloff=5
+" 历史记录条数
 set history=1000
+" Do incremental searching.-增量搜索,在搜索模式下输入字符时，Vim 将会立即跳转到文档中第一个符合你所输入的内容的位置
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+" 不用Q进入Ex模式，而是用来做格式化
+map Q gq
 
 " status bar
 set showmode
@@ -235,10 +257,12 @@ set argtextobj
 " jump-motion (required idea plugin: IdeaVim-EasyMotion, AceJump)
 set easymotion
 
-" highlight yank (bundle plugin)
+" highlight yank (bundle plugin)-高亮拷贝的文本
 set highlightedyank
 let g:highlightedyank_highlight_duration = "1000"
-let g:highlightedyank_highlight_color = "rgba(57, 197, 187, 155)"
+
+" Commentary plugin-使用'tpope/vim-commentary'注释插件，用gc gcc 实现注释
+set commentary
 
 " translation (required idea plugin: Translation)
 nmap \\tt <Action>($ShowTranslationDialogAction)
@@ -273,6 +297,4 @@ xnoremap > >gv
 
 " alias
 nmap <C-a> ggVG"+y
-
-
 ```
