@@ -310,4 +310,6 @@ Plug 'preservim/nerdtree'
 " replace with register (bundle plugin)
 " usage: https://github.com/vim-scripts/ReplaceWithRegister
 Plug 'vim-scripts/ReplaceWithRegister'
+
+
 ```
